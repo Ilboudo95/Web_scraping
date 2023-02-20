@@ -10,7 +10,7 @@ from requests import get
 import pandas as pd
 import numpy as np
 import time
-from selenium_recaptcha import Recaptcha_Solver
+# from selenium_recaptcha import Recaptcha_Solver
 
 def rechercheGoogle(localite,nombrePage):
     # chargement de webdriver et du navigateur
@@ -68,7 +68,7 @@ def postGroup(nbpage,idGroup):
         ListPost.append(post)
     return ListPost
 
-ListIdGroup=rechercheGoogle("mbadon",10)
+ListIdGroup=rechercheGoogle("mbadon",1000)
 nbpage=1
 items=[(nbpage,x) for x in ListIdGroup]
 
@@ -87,7 +87,7 @@ if __name__ == '__main__':
         # decomenter la ligne suivante pour afficher les valeurs
         #print(ListeDictionnaire)
         df = pd.concat([pd.DataFrame(lst) for lst in ListeDictionnaire])
-        df.to_csv("output_ciad.csv")
+        df.to_csv("output_mbon.csv", index= False)
         end_time = time.time() - start_time
         # Fin des traitement
         print("Temps total de compilation "+str(end_time))
